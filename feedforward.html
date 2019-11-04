@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fun with NNs</title>
+</head>
+
+<body>
+	<h1>Introduction</h1>
+
+	<p>
+		The purpose of this exercise is to get you accquainted with the 
+		basic operations of a fully connected neural network. We shall look at the two
+		operations.
+		<ul>
+			<li> Forward Propogation (aka Forward prop)</li>
+			<li> Backward Propogation (aka Backward prop) </li>
+		</ul>
+	</p>
+
+	<h1>About the Dataset</h1>
+	<h2>Format and keywords of the files </h2>
+	<p>
+		There are two file formats in the <code>data</code> directory.
+		<ul>
+			<li><code>.csv</code>-These files contain the actual training or test
+			features. Notice the keywords <b>dev</b> and <b>train </b>. These denote the test
+			and train datasets' features respectively.</li>
+			<li><code>.txt</code>-These files contain the label associated with
+			the respective <code>train</code> or <code>dev</code> file</li>
+		</ul>
+	</p>
+	<h2>Music: Hit or not</h2>
+	<p>
+	The first task is to predict whether a song was a ‘hit’, meaning that it made it onto the Billboard
+	Top 50 — each instance has a label “Hit?” equal to “yes” (1) or “no” (0).
+	The attributes or features are: year of
+	release(multi-valued discrete, range [1900, 2000]), length of recording (continuous, range [0, 7]), jazz
+	(binary discrete, “yes”/“no”), rock and roll (binary discrete, “yes”/“no”).
+	As you might have guessed, this is a classification problem.
+	</p>
+	<h2>Final Score from my assignments' scores</h2>
+	he second task is to predict the final student scores in a high school course. The attributes are
+student grades on 2 multiple choice assignments M1 and M2, 2 programming assignments P1 and
+P2, and the final exam F. The scores of all the components are integers in the range [0, 100]. All the
+attributes are multivalued discrete. Again, check the csv files to see the attribute values. The final out-
+put is also integer with a range [0, 100]. Notice that, for this problem, we are
+performing regression.
+
+	<h1>Thinking about your Neural net's architecture </h1>
+	<p>
+	There are several things that you might want to consider before you start
+	coding your architecture. To name a few:
+		<ul>
+		<li>Initialization of weights</li>
+		<li>Number of units in the hidden layer</li>
+		<li>Network connectivity</li>
+		<li>Number of epochs* (or, when to stop the training)</li>
+		<li>Pre-processing and post-processing of input and output</li>
+		<li>Learning rate</li>
+		</ul>
+		<b><i>epoch</i></b> is a single traversal over your training set when
+		you run your optimization (here, gradient descent).
+	</p>
+	<h2> What you can use for this exercise </h2>
+	<p>
+		<b>Universal Approximate Theorem</b>-Recall how the following
+		computation graph can be used to approximate almost any function. (Chapter 6,
+		Pg. 92).<br>
+		<img src="universalApproximate.jpg" width=500px>
+		<br>
+		<b>g</b> can be any non-linear activation function, say sigmoid.<br>
+		<b>W<sub>1</sub>, b<sub>1</sub></b> is the weight matrix between the input and hidden
+		layer. Similarly, <b>W<sub>2</sub>, b<sub>2</sub></b> is the weight matrix between
+		the hidden layer and the output layer.
+
+		<b>For the sake of simplicity, it is recommended that you implement a
+		single hidden layer architecture</b>.
+		<br> It might be worthwhile to spend some time pondering about the
+		dimensions of the various matrices and vectorizing your operations. 
+
+		<h2>Stochastic Gradient Descent </h2>
+		Consider implementing stochastic gradient descent.
+		Instead of performing a single pass of forward and backward prop over
+		the entire dataset, stochastic gradient descent updates the weights of
+		the neural net one training example at a time. This is not a compulsion
+		as the number of training examples are not that many, and you won't
+		require any GPUs or concurrent computations which require splitting your
+		dataset.
+	</p>
+
+	<h1>Forward propogation </h1>
+		<p>
+		This should be straight-forward.<br>
+		h = <i>g</i>(<b>W</b><sup>T</sup><sub>1</sub>x + <b>b</b><sub>1</sub>) <br>
+		o = <b>W</b><sup>T</sup><sub>2</sub>h + <b>b</b><sub>2</sub> <br>
+		<b>Note</b> that x, h, o, and b are column vectors in the above equations. You
+		can also vectorize the operation over the entire dataset by thinking of
+		x as the design matrix of the dataset instead of one row at a time.
+		</p>
+	<h1>Backward propogation </h1>
+	<p>
+		Error function e = (o - y)<sup>2</sup>/2, where y is the value associated
+		with the training example x.
+
+		For a single layer architecture the update equations become:
+
+	</p>
+</body>
+</html>
