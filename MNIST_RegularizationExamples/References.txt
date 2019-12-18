@@ -1,0 +1,6 @@
+1. Understanding the difficulties of Deep Learning, Y Bengio et al:
+      http://proceedings.mlr.press/v9/glorot10a/glorot10a.pdf
+2. Why does weight initialization matter?  
+   Understanding Xavier Initialization in Deep Neural Networks 
+      https://prateekvjoshi.com/2016/03/29/understanding-xavier-initialization-in-deep-neural-networks/
+3. 
