@@ -9,6 +9,7 @@ rng(0);
 %     tdata = loadMNISTImages('data/t10k-images.idx3-ubyte');
 %     tlabels = loadMNISTLabels('data/t10k-labels.idx1-ubyte') + 1;
 %     
+
     rp = randperm(size(trainImageVecs, 2));
     trainImageVecs = trainImageVecs(:, rp(1:10000));
     trainLabels = trainLabels(rp(1:10000));
@@ -21,7 +22,7 @@ rng(0);
 % network setting
 [~, num_data] = size(trainImageVecs);
 [~, num_tdata] = size(testImageVecs);
-num_epoch = 100;
+num_epoch = 50;
 batch_size = 100;
 dim = 28;
 tx = reshape(testImageVecs, dim, dim, []);
